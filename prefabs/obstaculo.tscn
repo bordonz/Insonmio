@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dn70et8l7yqut"]
+
+[ext_resource type="Script" uid="uid://cn46mj8xs36ku" path="res://prefabs/obstaculo.gd" id="1_kh81v"]
+[ext_resource type="Texture2D" uid="uid://r1cy8dnawtds" path="res://sprites/roca-obstaculo.png" id="2_b15wn"]
+[ext_resource type="Texture2D" uid="uid://cebeq23mq3jx3" path="res://sprites/bache-obstaculo.png" id="3_iu6bj"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kh81v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4jou"]
+size = Vector2(16, 18)
+
+[node name="Obstaculo" type="RigidBody2D" unique_id=1320764075]
+collision_mask = 0
+gravity_scale = 0.0
+linear_velocity = Vector2(0, 128)
+linear_damp_mode = 1
+script = ExtResource("1_kh81v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1885559379]
+visible = false
+scale = Vector2(46.000004, 44.722225)
+texture = SubResource("CanvasTexture_kh81v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811279701]
+shape = SubResource("RectangleShape2D_g4jou")
+
+[node name="RocaObstaculo" type="Sprite2D" parent="." unique_id=530264301]
+visible = false
+texture_filter = 1
+position = Vector2(0, -1)
+texture = ExtResource("2_b15wn")
+
+[node name="BacheObstaculo" type="Sprite2D" parent="." unique_id=806540106]
+texture_filter = 1
+position = Vector2(1, -1)
+texture = ExtResource("3_iu6bj")

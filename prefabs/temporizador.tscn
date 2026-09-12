@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://wsgpfaok3fil"]
+
+[ext_resource type="Script" uid="uid://cg3n8481w1ol1" path="res://temporizador.gd" id="1_48kiy"]
+
+[node name="Temporizador" type="Node2D" unique_id=1311648849]
+script = ExtResource("1_48kiy")
+tiempo = 120
+
+[node name="Timer" type="Timer" parent="." unique_id=1789973052]
+wait_time = 60.0
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=786056799]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Tiempo restante:"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

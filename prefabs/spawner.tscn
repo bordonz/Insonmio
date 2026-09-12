@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bu882bm7aa3vf"]
+
+[ext_resource type="Script" uid="uid://cbd7328g3ruix" path="res://prefabs/spawner.gd" id="1_8khw6"]
+
+[node name="Spawner" type="Node2D" unique_id=2079509799]
+script = ExtResource("1_8khw6")
+maxTimer = 15
+velocidadObstaculo = 64

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bhkckxumn5bf"]
+
+[ext_resource type="Script" uid="uid://ddvki2o5npluc" path="res://prefabs/barra_sueño.gd" id="1_20a5w"]
+[ext_resource type="Texture2D" uid="uid://c57mcmuw7vmi8" path="res://sprites/hud-v1.png" id="2_1eisk"]
+[ext_resource type="Texture2D" uid="uid://o655hay5o4ud" path="res://sprites/hud-v2.png" id="3_400mo"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_frt0p"]
+
+[node name="barra" type="Node2D" unique_id=1066701906]
+script = ExtResource("1_20a5w")
+
+[node name="fondo" type="Sprite2D" parent="." unique_id=197435823]
+position = Vector2(0, 51.75)
+scale = Vector2(14.003, 300)
+texture = SubResource("CanvasTexture_frt0p")
+offset = Vector2(0, -0.5)
+
+[node name="Label" type="Label" parent="." unique_id=230596512]
+visible = false
+offset_left = 17.0
+offset_top = 29.0
+offset_right = 74.0
+offset_bottom = 52.0
+text = "Sueño: "
+
+[node name="HudV1" type="Sprite2D" parent="." unique_id=849374499]
+visible = false
+position = Vector2(-32, -110)
+texture = ExtResource("2_1eisk")
+
+[node name="HudV2" type="Sprite2D" parent="." unique_id=260365233]
+texture_filter = 1
+position = Vector2(-16, -91)
+texture = ExtResource("3_400mo")

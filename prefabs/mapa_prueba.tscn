@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://6w5ncau1llw3"]
+
+[ext_resource type="PackedScene" uid="uid://dpq3shdrh5lb0" path="res://prefabs/lane.tscn" id="1_gr1it"]
+[ext_resource type="PackedScene" uid="uid://cbj3t0ran2t0w" path="res://prefabs/vehiculo.tscn" id="1_ooxnn"]
+[ext_resource type="Texture2D" uid="uid://84ejri803bs8" path="res://sprites/pasto.png" id="2_dmcua"]
+[ext_resource type="PackedScene" uid="uid://bhkckxumn5bf" path="res://prefabs/barraSueño.tscn" id="3_3odpn"]
+[ext_resource type="Texture2D" uid="uid://db0s703jitlf8" path="res://sprites/calle.png" id="3_rctgr"]
+[ext_resource type="PackedScene" uid="uid://wsgpfaok3fil" path="res://prefabs/temporizador.tscn" id="4_gr1it"]
+[ext_resource type="PackedScene" uid="uid://bu882bm7aa3vf" path="res://prefabs/spawner.tscn" id="4_pi52g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ooxnn"]
+size = Vector2(407, 668)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pi52g"]
+
+[node name="Node2D" type="Node2D" unique_id=1219999238]
+
+[node name="Carretera" type="StaticBody2D" parent="." unique_id=442042631]
+scale = Vector2(0.5498079, 0.54638195)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carretera" unique_id=1076071770]
+position = Vector2(193.5, 324)
+shape = SubResource("RectangleShape2D_ooxnn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Carretera" unique_id=1433899963]
+position = Vector2(952, 326)
+shape = SubResource("RectangleShape2D_ooxnn")
+
+[node name="Pasto" type="Sprite2D" parent="Carretera" unique_id=635099367]
+position = Vector2(580.20264, 325.77942)
+scale = Vector2(1.818817, 1.8302215)
+texture = ExtResource("2_dmcua")
+
+[node name="Calle" type="Sprite2D" parent="Carretera" unique_id=1038507992]
+position = Vector2(582.0214, 329.43988)
+scale = Vector2(1.818817, 1.8302215)
+texture = ExtResource("3_rctgr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Carretera" unique_id=1763273266]
+visible = false
+position = Vector2(198.25, 330.75)
+scale = Vector2(397.5, 662.5)
+texture = SubResource("PlaceholderTexture2D_pi52g")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Carretera" unique_id=1428525215]
+visible = false
+position = Vector2(680, 219)
+scale = Vector2(397.5, 662.5)
+texture = SubResource("PlaceholderTexture2D_pi52g")
+offset = Vector2(0.6874214, 0.16867924)
+
+[node name="Lane" parent="Carretera" unique_id=198191412 instance=ExtResource("1_gr1it")]
+position = Vector2(-34.55752, 0)
+scale = Vector2(1.818817, 1.8302215)
+laneSpeed = 1
+
+[node name="barra" parent="." unique_id=1066701906 instance=ExtResource("3_3odpn")]
+position = Vector2(56, 287)
+
+[node name="Spawner" parent="." unique_id=2079509799 instance=ExtResource("4_pi52g")]
+position = Vector2(320, 0)
+maxTimer = 60
+velocidadObstaculo = 128
+
+[node name="Temporizador" parent="." unique_id=1311648849 instance=ExtResource("4_gr1it")]
+position = Vector2(8, 8)
+
+[node name="Vehiculo" parent="." unique_id=793986522 node_paths=PackedStringArray("barraSueno") instance=ExtResource("1_ooxnn")]
+position = Vector2(318, 304)
+barraSueno = NodePath("../barra")
+volantazo = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=135562096]
+offset_left = 220.0
+offset_right = 260.0
+offset_bottom = 40.0
+scale = Vector2(5.1182323, 5.158451)
+color = Color(0.062050562, 0.048075676, 0.04589211, 0.72156864)

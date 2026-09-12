@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dpq3shdrh5lb0"]
+
+[ext_resource type="Script" uid="uid://dmyqts4c6mm42" path="res://prefabs/lane.gd" id="1_ertaf"]
+[ext_resource type="Texture2D" uid="uid://4isovrp5d5me" path="res://sprites/lineas_calle.png" id="2_ertaf"]
+
+[node name="Lane" type="Node2D" unique_id=198191412 node_paths=PackedStringArray("lane")]
+script = ExtResource("1_ertaf")
+lane = NodePath("Lane")
+
+[node name="Lane" type="Sprite2D" parent="." unique_id=1026915333]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(335, 186)
+texture = ExtResource("2_ertaf")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 384)
