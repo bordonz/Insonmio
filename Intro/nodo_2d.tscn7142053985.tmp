@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://bbbdssupx7ygt"]
+
+[ext_resource type="Script" uid="uid://c8idxpc16kkq5" path="res://Intro/descripcion_tipeo.gd" id="1_v38j3"]
+[ext_resource type="FontFile" uid="uid://dr6v8ww0sbvmr" path="res://Tipografia/PressStart2P-Regular.ttf" id="2_37vlb"]
+[ext_resource type="Script" uid="uid://b6wxg24mk0b8s" path="res://Intro/camara_temblor.gd" id="3_37vlb"]
+[ext_resource type="Shader" uid="uid://dui53d1llrn3i" path="res://Intro/nodo_2d.gdshader" id="4_ukvte"]
+
+[sub_resource type="Animation" id="Animation_37vlb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titulo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Presionar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ukvte"]
+resource_name = "animacion_intro"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titulo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 4),
+"transitions": PackedFloat32Array(1.8660663, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Presionar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.41, 3.83),
+"transitions": PackedFloat32Array(6.72717, 0.085377544),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0cwx"]
+_data = {
+&"RESET": SubResource("Animation_37vlb"),
+&"animacion_intro": SubResource("Animation_ukvte")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ri8m"]
+shader = ExtResource("4_ukvte")
+shader_parameter/blur_intensidad = 0.0
+shader_parameter/oscuridad = 0.0
+
+[sub_resource type="GDScript" id="GDScript_ukvte"]
+script/source = "extends ColorRect
+
+@export var max_respiraciones: int = 3 # Cantidad de ciclos antes de parpadear
+@export var velocidad_respiracion: float = 2.0
+@export var max_blur: float = 4.0
+
+var tiempo: float = 0.0
+var contador_ciclos: int = 0
+var en_parpadeo: bool = false
+
+func _process(delta: float) -> void:
+	if en_parpadeo:
+		return
+
+	tiempo += delta * velocidad_respiracion
+	
+	# Usamos sin() para calcular la onda de respiración
+	var onda = (sin(tiempo) + 1.0) * 0.5
+	
+	# Detectamos cuando la onda llega al punto mínimo (comienza un nuevo ciclo)
+	if sin(tiempo - delta * velocidad_respiracion) < -0.99 and sin(tiempo) >= -0.99:
+		contador_ciclos += 1
+		if contador_ciclos >= max_respiraciones:
+			ejecutar_parpadeo()
+			return
+
+	# Enviamos la intensidad del blur al shader
+	material.set_shader_parameter(\"blur_intensidad\", onda * max_blur)
+
+func ejecutar_parpadeo() -> void:
+	en_parpadeo = true
+	contador_ciclos = 0
+	
+	var tween = create_tween()
+	# 1. Cierra los ojos (oscuridad total + blur alto) rápido
+	tween.tween_property(material, \"shader_parameter/oscuridad\", 1.0, 0.2)
+	tween.parallel().tween_property(material, \"shader_parameter/blur_intensidad\", max_blur, 0.2)
+	
+	# 2. Mantiene los ojos cerrados un instante
+	tween.tween_interval(0.3)
+	
+	# 3. Abre los ojos suavemente
+	tween.tween_property(material, \"shader_parameter/oscuridad\", 0.0, 0.4)
+	
+	# Al finalizar la animación del parpadeo, reiniciamos el ciclo
+	tween.tween_callback(func(): 
+		tiempo = 0.0
+		en_parpadeo = false
+	)
+"
+
+[node name="Nodo2d" type="Control" unique_id=913120807]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v38j3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1173818984]
+position = Vector2(320, 180)
+script = ExtResource("3_37vlb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=388779700]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.07058824, 0.09019608, 0.16470589, 1)
+
+[node name="Titulo" type="Label" parent="ColorRect" unique_id=2017081956]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -40.0
+offset_right = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_37vlb")
+theme_override_font_sizes/font_size = 40
+text = "INSONMIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Presionar" type="Label" parent="ColorRect" unique_id=840921278]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 204.0
+offset_right = 222.0
+offset_bottom = 224.0
+grow_horizontal = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_37vlb")
+theme_override_font_sizes/font_size = 12
+text = "Presiona una tecla para continuar..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Descipcion" type="Label" parent="ColorRect" unique_id=177083525]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.5
+offset_top = 186.0
+offset_right = 278.5
+offset_bottom = 266.0
+grow_horizontal = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_37vlb")
+theme_override_font_sizes/font_size = 12
+text = "El insomnio es la dificultad persistente
+para conciliar o mantener el sueño, incluso 
+cuando existen las condiciones adecuadas para
+descansar."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect" unique_id=2133181915]
+libraries/ = SubResource("AnimationLibrary_j0cwx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=434482731]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1537586235]
+material = SubResource("ShaderMaterial_8ri8m")
+offset_right = 640.0
+offset_bottom = 360.0
+script = SubResource("GDScript_ukvte")

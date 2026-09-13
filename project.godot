@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Carrera"
 run/main_scene="uid://6w5ncau1llw3"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioManager="*uid://d0k2jynw2a55u"
 
 [display]
 

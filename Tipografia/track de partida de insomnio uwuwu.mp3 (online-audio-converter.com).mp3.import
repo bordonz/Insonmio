@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://db2xd3ivr7a4u"
+path="res://.godot/imported/track de partida de insomnio uwuwu.mp3 (online-audio-converter.com).mp3-eb7a3ab07e502affbcae4cb28b2d5ede.mp3str"
+
+[deps]
+
+source_file="res://Tipografia/track de partida de insomnio uwuwu.mp3 (online-audio-converter.com).mp3"
+dest_files=["res://.godot/imported/track de partida de insomnio uwuwu.mp3 (online-audio-converter.com).mp3-eb7a3ab07e502affbcae4cb28b2d5ede.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

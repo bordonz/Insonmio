@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://bfytxnv122j4g"]
+
+[ext_resource type="Texture2D" uid="uid://c0xdvqdkeyrqs" path="res://sprites/Intro/intro_fondo.png" id="1_u03px"]
+[ext_resource type="Script" uid="uid://c3mk675yoahbp" path="res://Menu/menu.gd" id="1_v7enl"]
+[ext_resource type="Texture2D" uid="uid://yi7ucsx3yxeg" path="res://sprites/Intro/luna.png" id="2_62dhm"]
+[ext_resource type="Texture2D" uid="uid://dt0jg4yshrlai" path="res://sprites/Intro/degrade1.png" id="2_b7iep"]
+[ext_resource type="Texture2D" uid="uid://l6q22ogff5uq" path="res://sprites/Intro/Nubes 4/fondonubes4_L.png" id="2_crea4"]
+[ext_resource type="Texture2D" uid="uid://defxah0sk6g6c" path="res://sprites/Intro/Nubes 1/fondonubes1_R.png" id="2_fipr7"]
+[ext_resource type="Texture2D" uid="uid://csak1itn6mvjo" path="res://sprites/Intro/Nubes 2/fondonubes2_R.png" id="2_m87qx"]
+[ext_resource type="Texture2D" uid="uid://ektjvhvqomnn" path="res://sprites/Intro/Nubes 3/fondonubes3_L.png" id="3_0cyjp"]
+[ext_resource type="Texture2D" uid="uid://caou1upfmkgnh" path="res://sprites/Intro/degrade2.png" id="3_e4kd3"]
+[ext_resource type="Texture2D" uid="uid://bxama8m4r4pes" path="res://sprites/Intro/Nubes 4/fondonubes4_R.png" id="3_w32jx"]
+[ext_resource type="Texture2D" uid="uid://bfrg2clhge2hv" path="res://sprites/Intro/Nubes 3/fondonubes3_R.png" id="5_m87qx"]
+[ext_resource type="Texture2D" uid="uid://doyiflw1wxdax" path="res://sprites/Intro/Nubes 2/fondonubes2_L.png" id="7_3c4i7"]
+[ext_resource type="Texture2D" uid="uid://bhx3h0ctvlcmd" path="res://sprites/Intro/Nubes 1/fondonubes1_L.png" id="8_62dhm"]
+[ext_resource type="Texture2D" uid="uid://bgnwnttqggl31" path="res://sprites/Intro/titulo.png" id="9_5t8sb"]
+[ext_resource type="Texture2D" uid="uid://k2ng4eggj4q6" path="res://sprites/Intro/salir_icono.png" id="13_p7c5i"]
+[ext_resource type="Texture2D" uid="uid://dg8evlvdtff0k" path="res://sprites/Intro/play.png" id="14_e4kd3"]
+[ext_resource type="Texture2D" uid="uid://8n4gllpgump2" path="res://sprites/Intro/ajustes_icono.png" id="14_v7enl"]
+
+[node name="Menu" type="Control" unique_id=2085718282]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v7enl")
+
+[node name="FondoPrincipal" type="TextureRect" parent="." unique_id=548423227]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_u03px")
+metadata/_edit_lock_ = true
+
+[node name="Degrade1" type="TextureRect" parent="." unique_id=649647575]
+texture_filter = 1
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_b7iep")
+metadata/_edit_lock_ = true
+
+[node name="Degrade2" type="TextureRect" parent="." unique_id=807478499]
+texture_filter = 1
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("3_e4kd3")
+metadata/_edit_lock_ = true
+
+[node name="Luna" type="TextureRect" parent="." unique_id=1944115798]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_62dhm")
+metadata/_edit_lock_ = true
+
+[node name="Nube1Izq" type="TextureRect" parent="." unique_id=1851792446]
+modulate = Color(1, 1, 1, 0.49411765)
+layout_mode = 0
+offset_left = -10.0
+offset_top = -39.0
+offset_right = 770.0
+offset_bottom = 461.0
+texture = ExtResource("8_62dhm")
+metadata/_edit_lock_ = true
+
+[node name="Nube1Der" type="TextureRect" parent="." unique_id=1849274856]
+modulate = Color(1, 1, 1, 0.49411765)
+layout_mode = 0
+offset_left = -100.0
+offset_top = -35.0
+offset_right = 680.0
+offset_bottom = 465.0
+texture = ExtResource("2_fipr7")
+metadata/_edit_lock_ = true
+
+[node name="Nube2Der" type="TextureRect" parent="." unique_id=1617875244]
+modulate = Color(1, 1, 1, 0.49411765)
+texture_filter = 1
+layout_mode = 0
+offset_left = -100.0
+offset_top = -56.0
+offset_right = 680.0
+offset_bottom = 444.0
+texture = ExtResource("2_m87qx")
+metadata/_edit_lock_ = true
+
+[node name="Nube2Izq" type="TextureRect" parent="." unique_id=280362930]
+texture_filter = 1
+layout_mode = 0
+offset_left = -10.0
+offset_top = -50.0
+offset_right = 770.0
+offset_bottom = 450.0
+texture = ExtResource("7_3c4i7")
+metadata/_edit_lock_ = true
+
+[node name="Nube3Izq" type="TextureRect" parent="." unique_id=1492833493]
+z_index = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = -10.0
+offset_top = -50.0
+offset_right = 770.0
+offset_bottom = 450.0
+texture = ExtResource("3_0cyjp")
+metadata/_edit_lock_ = true
+
+[node name="Nube4Der" type="TextureRect" parent="Nube3Izq" unique_id=286993073]
+texture_filter = 1
+layout_mode = 0
+offset_left = -100.0
+offset_top = 13.0
+offset_right = 680.0
+offset_bottom = 513.0
+texture = ExtResource("3_w32jx")
+metadata/_edit_lock_ = true
+
+[node name="Nube3Der" type="TextureRect" parent="." unique_id=14526347]
+texture_filter = 1
+layout_mode = 0
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 680.0
+offset_bottom = 420.0
+texture = ExtResource("5_m87qx")
+metadata/_edit_lock_ = true
+
+[node name="ParpadoSuperior" type="ColorRect" parent="." unique_id=659972414]
+z_index = 4
+layout_mode = 0
+offset_top = -207.0
+offset_right = 640.0
+offset_bottom = 153.0
+color = Color(0, 0, 0, 1)
+
+[node name="Nube4Izq" type="TextureRect" parent="." unique_id=2066837357]
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = -10.0
+offset_top = -50.0
+offset_right = 770.0
+offset_bottom = 450.0
+texture = ExtResource("2_crea4")
+metadata/_edit_lock_ = true
+
+[node name="SalirBt" type="Button" parent="." unique_id=26444897]
+texture_filter = 1
+layout_mode = 0
+offset_left = 208.0
+offset_top = 231.0
+offset_right = 286.0
+offset_bottom = 309.0
+icon = ExtResource("13_p7c5i")
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="ConfigBt" type="Button" parent="." unique_id=1503653339]
+texture_filter = 1
+layout_mode = 0
+offset_left = 362.0
+offset_top = 232.0
+offset_right = 440.0
+offset_bottom = 310.0
+icon = ExtResource("14_v7enl")
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="Titulo" type="TextureRect" parent="." unique_id=1421345101]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.0
+offset_top = 121.0
+offset_right = 547.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_5t8sb")
+metadata/_edit_lock_ = true
+
+[node name="StartBt" type="Button" parent="." unique_id=1288311894]
+texture_filter = 1
+layout_mode = 0
+offset_left = 283.0
+offset_top = 230.0
+offset_right = 361.0
+offset_bottom = 308.0
+icon = ExtResource("14_e4kd3")
+flat = true
+
+[node name="ParpadoInferior" type="ColorRect" parent="." unique_id=1325160454]
+z_index = 4
+layout_mode = 0
+offset_top = 152.0
+offset_right = 640.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 1)

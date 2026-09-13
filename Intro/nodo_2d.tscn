@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://bbbdssupx7ygt"]
+
+[ext_resource type="Script" uid="uid://d0jik5w3krnvt" path="res://Intro/nodo_2d.gd" id="1_v38j3"]
+[ext_resource type="Texture2D" uid="uid://bgnwnttqggl31" path="res://sprites/Intro/titulo.png" id="2_37vlb"]
+[ext_resource type="Texture2D" uid="uid://c0xdvqdkeyrqs" path="res://sprites/Intro/intro_fondo.png" id="2_t4vdh"]
+[ext_resource type="FontFile" uid="uid://c4oh3ba03wovi" path="res://Tipografia/Tengoku.ttf" id="2_ukvte"]
+[ext_resource type="Texture2D" uid="uid://dt0jg4yshrlai" path="res://sprites/Intro/degrade1.png" id="3_vy8ln"]
+[ext_resource type="AudioStream" uid="uid://db2xd3ivr7a4u" path="res://Tipografia/track de partida de insomnio uwuwu.mp3 (online-audio-converter.com).mp3" id="4_ukvte"]
+[ext_resource type="Texture2D" uid="uid://caou1upfmkgnh" path="res://sprites/Intro/degrade2.png" id="4_wlpau"]
+
+[sub_resource type="Animation" id="Animation_37vlb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titulo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Presionar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Descipcion:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j0cwx"]
+resource_name = "animacion_dialogos"
+length = 15.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titulo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.2666667, 3.2666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Descipcion:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.93333334, 2.6),
+"transitions": PackedFloat32Array(0.45062512, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5, 5.4, 7.4666667, 11.566667, 15.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [NodePath("AmigoD1"), 1.5],
+"method": &"animar_dialogo"
+}, {
+"args": [NodePath("CamioneroD1"), 1.5],
+"method": &"animar_dialogo"
+}, {
+"args": [NodePath("AmigoD2"), 4.0],
+"method": &"animar_dialogo"
+}, {
+"args": [NodePath("CamioneroD2"), 3.0],
+"method": &"animar_dialogo"
+}, {
+"args": [1.2],
+"method": &"cerrar_ojos_y_cambiar_escena"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ukvte"]
+resource_name = "animacion_intro"
+length = 4.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Titulo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.13333334, 3.8666666),
+"transitions": PackedFloat32Array(2.2973988, 0.18946481),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Presionar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4, 3.5333333),
+"transitions": PackedFloat32Array(7.2099996, 0.16493836),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0cwx"]
+_data = {
+&"RESET": SubResource("Animation_37vlb"),
+&"animacion_dialogos": SubResource("Animation_j0cwx"),
+&"animacion_intro": SubResource("Animation_ukvte")
+}
+
+[sub_resource type="GDScript" id="GDScript_37vlb"]
+script/source = "extends Label
+
+func iniciar_efecto_escritura() -> void:
+	visible = true
+	visible_ratio = 0.0
+	
+	var tween = create_tween()
+	tween.tween_property(self, \"visible_ratio\", 1.0, 10.0)
+	await tween.finished
+"
+
+[node name="NodoIntro" type="Control" unique_id=913120807]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v38j3")
+musica_intro = ExtResource("4_ukvte")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=893737776]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_t4vdh")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1991947294]
+modulate = Color(1, 1, 1, 0.5529412)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("3_vy8ln")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=956491632]
+modulate = Color(1, 1, 1, 0.5921569)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("4_wlpau")
+metadata/_edit_lock_ = true
+
+[node name="Titulo" type="TextureRect" parent="." unique_id=1237103475]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = 110.0
+offset_right = 549.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_37vlb")
+metadata/_edit_lock_ = true
+
+[node name="Presionar" type="Label" parent="." unique_id=840921278]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 100.0
+offset_top = 216.0
+offset_right = 545.0
+offset_bottom = 236.0
+grow_horizontal = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_ukvte")
+theme_override_font_sizes/font_size = 12
+text = "Presiona una tecla para continuar..."
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Descipcion" type="Label" parent="." unique_id=177083525]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 181.0
+offset_top = 219.0
+offset_right = 461.0
+offset_bottom = 276.0
+grow_horizontal = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_ukvte")
+theme_override_font_sizes/font_size = 10
+text = "El insomnio es la dificultad persistente para conciliar
+o mantener el sueño, incluso  cuando existen las condiciones
+adecuadas para descansar."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=230690425]
+libraries/ = SubResource("AnimationLibrary_j0cwx")
+autoplay = &"animacion_intro"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=40622184]
+layout_mode = 0
+offset_right = 152.0
+offset_bottom = 104.0
+metadata/_edit_lock_ = true
+
+[node name="AmigoD1" type="Label" parent="." unique_id=996846232]
+visible = false
+layout_mode = 0
+offset_left = 235.0
+offset_top = 51.0
+offset_right = 387.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("2_ukvte")
+text = "¿Otra vez no fuiste?"
+horizontal_alignment = 1
+script = SubResource("GDScript_37vlb")
+metadata/_edit_lock_ = true
+
+[node name="AmigoD2" type="Label" parent="." unique_id=1308597834]
+visible = false
+layout_mode = 0
+offset_left = 177.0
+offset_top = 162.0
+offset_right = 471.0
+offset_bottom = 263.0
+theme_override_fonts/font = ExtResource("2_ukvte")
+text = "
+A la cita. No puedo seguir diciéndote
+lo mismo todas las noches.
+	"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CamioneroD1" type="Label" parent="." unique_id=1606160818]
+visible = false
+layout_mode = 0
+offset_left = 267.0
+offset_top = 120.0
+offset_right = 349.0
+offset_bottom = 143.0
+theme_override_colors/font_color = Color(0.8235294, 0.47843137, 0.16470589, 1)
+theme_override_fonts/font = ExtResource("2_ukvte")
+text = "¿A dónde?"
+metadata/_edit_lock_ = true
+
+[node name="CamioneroD2" type="Label" parent="." unique_id=1874996011]
+visible = false
+layout_mode = 0
+offset_left = 166.0
+offset_top = 289.0
+offset_right = 489.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0.8235294, 0.47843137, 0.16470589, 1)
+theme_override_fonts/font = ExtResource("2_ukvte")
+text = "Estoy bien no es un problema de verdad..."
+metadata/_edit_lock_ = true
+
+[node name="Dialogo" type="AudioStreamPlayer2D" parent="." unique_id=573170871]
+stream = ExtResource("4_ukvte")
+volume_db = 24.0
+metadata/_edit_lock_ = true
+
+[node name="ParpadoSuperior" type="ColorRect" parent="." unique_id=1025638859]
+layout_mode = 0
+offset_top = -360.0
+offset_right = 640.0
+color = Color(0, 0, 0, 1)
+
+[node name="ParpadoInferior" type="ColorRect" parent="." unique_id=1717136214]
+layout_mode = 0
+offset_top = 360.0
+offset_right = 640.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
